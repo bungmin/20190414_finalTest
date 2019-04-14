@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         weightEdt = findViewById(R.id.weightEdt);
         okBtn = findViewById(R.id.okBtn);
 
-        Intent intent = new Intent(MainActivity.this, BMIActivity.class);
+        final Intent intent = new Intent(MainActivity.this, BMIActivity.class);
 
 
         okBtn.setOnClickListener(new View.OnClickListener() {
@@ -35,6 +35,10 @@ public class MainActivity extends AppCompatActivity {
                 float floatWeight=Float.valueOf(weightEdt.getText().toString());
                 float floatKey = Float.valueOf(keyEdt.getText().toString());
                 float floatBmi = floatWeight / (floatKey * floatKey);
+
+                intent.putExtra("bmi", floatBmi);
+                startActivity(intent);
+
 
 
                 Log.e("keyEdtType",String.valueOf(floatBmi));
